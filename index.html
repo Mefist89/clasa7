@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tipuri de date în C++ | Clasa a 7-a</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Source+Code+Pro:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">C++ · Clasa a 7-a · Informatică</div>
+  <h1>Tipuri de date<br><span>în C++</span></h1>
+  <p>Aflăm ce tipuri de date există în programe — cu exemple din viața de zi cu zi</p>
+  <div class="type-pills">
+    <div class="pill int">  <span class="pill-icon">🔢</span> int</div>
+    <div class="pill float"><span class="pill-icon">📐</span> float</div>
+    <div class="pill char"> <span class="pill-icon">🔤</span> char</div>
+    <div class="pill bool"> <span class="pill-icon">✅</span> bool</div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="page active" id="page-1">
+
+  <!-- ТЕОРИЯ -->
+  <div class="section-title"><span class="num">📖</span> Rezumat tipuri de date</div>
+  <div class="theory-grid">
+    <div class="theory-card int" data-type="int">
+      <div class="tc-type">int</div>
+      <div class="tc-desc">Numere întregi — fără parte fracționară. Cantitate, număr, vârstă.</div>
+      <div class="tc-examples">
+        <span class="tc-example">7</span>
+        <span class="tc-example">-3</span>
+        <span class="tc-example">100</span>
+        <span class="tc-example">0</span>
+      </div>
+    </div>
+    <div class="theory-card float" data-type="float">
+      <div class="tc-type">float</div>
+      <div class="tc-desc">Numere zecimale — cu punct. Preț, înălțime, temperatură.</div>
+      <div class="tc-examples">
+        <span class="tc-example">3.14</span>
+        <span class="tc-example">1.75</span>
+        <span class="tc-example">99.9</span>
+      </div>
+    </div>
+    <div class="theory-card char" data-type="char">
+      <div class="tc-type">char</div>
+      <div class="tc-desc">Un singur caracter între ghilimele simple. Literă, cifră, semn.</div>
+      <div class="tc-examples">
+        <span class="tc-example">'A'</span>
+        <span class="tc-example">'5'</span>
+        <span class="tc-example">'!'</span>
+        <span class="tc-example">'+'</span>
+      </div>
+    </div>
+    <div class="theory-card bool" data-type="bool">
+      <div class="tc-type">bool</div>
+      <div class="tc-desc">Valoare logică: doar «da» sau «nu».</div>
+      <div class="tc-examples">
+        <span class="tc-example">true</span>
+        <span class="tc-example">false</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ЗАДАНИЕ 1 -->
+  <div class="section-title"><span class="num">1</span> Identifică tipul de date</div>
+  <div class="task-block">
+    <div class="task-header">
+      <span class="task-badge">EXERCIȚIUL 1</span>
+      <span class="task-title">Din viață — în cod</span>
+    </div>
+    <p class="task-desc">Apasă pe tipul corect de date pentru fiecare situație din viață. Gândește-te: este număr întreg, zecimal, caracter sau «da/nu»?</p>
+
+    <div class="q-grid" id="q-grid"></div>
+
+    <div class="score-bar">
+      <div>
+        <div class="score-text">Răspunsuri corecte</div>
+        <div><span class="score-num" id="score-num">0</span> / <span id="score-total">0</span></div>
+      </div>
+      <button class="reset-btn" onclick="resetTask1()">🔄 Începe din nou</button>
+    </div>
+  </div>
+
+  </div>
+
+  <div class="page" id="page-2" style="display:none;">
+  <!-- ЗАДАНИЕ 2 -->
+  <div class="section-title"><span class="num">2</span> Matematică cu int și float</div>
+  <div class="task-block">
+    <div class="task-header">
+      <span class="task-badge">EXERCIȚIUL 2</span>
+      <span class="task-title">Calculează ca un calculator</span>
+    </div>
+    <p class="task-desc">Citește cu atenție codul și calculează rezultatul. Ține minte: int nu are parte fracționară — rezultatul împărțirii se rotunjește în jos!</p>
+
+    <div class="math-tabs">
+      <button class="tab-btn active-int" onclick="switchTab('int')">🔢 Tipul int</button>
+      <button class="tab-btn" id="tab-float" onclick="switchTab('float')">📐 Tipul float</button>
+    </div>
+
+    <div class="math-panel active" id="panel-int">
+      <!-- INT задачи -->
+      <div class="math-problem int-p">
+        <div class="mp-context">📦 În magazin au adus 25 cutii, în fiecare câte 4 borcane.</div>
+        <div class="mp-code">
+<span class="kw">int</span> <span class="vr">cutii</span> = <span class="nm">25</span>;<br>
+<span class="kw">int</span> <span class="vr">borcane_per_cutie</span> = <span class="nm">4</span>;<br>
+<span class="kw">int</span> <span class="vr">total</span> = cutii * borcane_per_cutie;<br>
+<span class="cm">// total = ?</span>
+        </div>
+        <div class="mp-question">Cât este <code>total</code>?</div>
+        <div class="answer-row">
+          <input class="answer-input" id="a1" type="text" placeholder="?">
+          <button class="check-btn" onclick="checkMath('a1',100,'fb1')">Verifică</button>
+          <span class="answer-feedback" id="fb1"></span>
+        </div>
+      </div>
+
+      <div class="math-problem int-p">
+        <div class="mp-context">🎒 Trebuie să împărțim 17 bomboane între 5 prieteni în mod egal. Câte bomboane primește fiecare? (restul se ignoră, ca la int)</div>
+        <div class="mp-code">
+<span class="kw">int</span> <span class="vr">bomboane</span> = <span class="nm">17</span>;<br>
+<span class="kw">int</span> <span class="vr">prieteni</span> = <span class="nm">5</span>;<br>
+<span class="kw">int</span> <span class="vr">fiecare</span> = bomboane / prieteni;<br>
+<span class="cm">// fiecare = ?</span>
+        </div>
+        <div class="mp-question">Cât este <code>fiecare</code>? (doar partea întreagă)</div>
+        <div class="answer-row">
+          <input class="answer-input" id="a2" type="text" placeholder="?">
+          <button class="check-btn" onclick="checkMath('a2',3,'fb2')">Verifică</button>
+          <span class="answer-feedback" id="fb2"></span>
+        </div>
+      </div>
+
+      <div class="math-problem int-p">
+        <div class="mp-context">🏆 În echipă sunt 11 jucători. Aflăm restul împărțirii: 11 % 3</div>
+        <div class="mp-code">
+<span class="kw">int</span> <span class="vr">jucatori</span> = <span class="nm">11</span>;<br>
+<span class="kw">int</span> <span class="vr">grupe</span> = <span class="nm">3</span>;<br>
+<span class="kw">int</span> <span class="vr">rest</span> = jucatori % grupe;<br>
+<span class="cm">// rest = ?</span>
+        </div>
+        <div class="mp-question">Cât este <code>rest</code>?</div>
+        <div class="answer-row">
+          <input class="answer-input" id="a3" type="text" placeholder="?">
+          <button class="check-btn" onclick="checkMath('a3',2,'fb3')">Verifică</button>
+          <span class="answer-feedback" id="fb3"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="math-panel" id="panel-float">
+      <!-- FLOAT задачи -->
+      <div class="math-problem float-p">
+        <div class="mp-context">🌡️ Dimineața erau 18.5°C, la prânz a mai crescut cu 6.3°C.</div>
+        <div class="mp-code">
+<span class="kw">float</span> <span class="vr">dimineata</span> = <span class="nm">18.5</span>;<br>
+<span class="kw">float</span> <span class="vr">crestere</span> = <span class="nm">6.3</span>;<br>
+<span class="kw">float</span> <span class="vr">pranz</span> = dimineata + crestere;<br>
+<span class="cm">// pranz = ?</span>
+        </div>
+        <div class="mp-question">Cât este <code>pranz</code>?</div>
+        <div class="answer-row">
+          <input class="answer-input" id="b1" type="text" placeholder="?">
+          <button class="check-btn" onclick="checkMath('b1',24.8,'fb4',0.01)">Verifică</button>
+          <span class="answer-feedback" id="fb4"></span>
+        </div>
+      </div>
+
+      <div class="math-problem float-p">
+        <div class="mp-context">🛒 Am cumpărat 3 kg de mere la 45.5 lei/kg. Cât plătim?</div>
+        <div class="mp-code">
+<span class="kw">float</span> <span class="vr">pret</span> = <span class="nm">45.5</span>;<br>
+<span class="kw">float</span> <span class="vr">kg</span> = <span class="nm">3.0</span>;<br>
+<span class="kw">float</span> <span class="vr">total</span> = pret * kg;<br>
+<span class="cm">// total = ?</span>
+        </div>
+        <div class="mp-question">Cât este <code>total</code>?</div>
+        <div class="answer-row">
+          <input class="answer-input" id="b2" type="text" placeholder="?">
+          <button class="check-btn" onclick="checkMath('b2',136.5,'fb5',0.01)">Verifică</button>
+          <span class="answer-feedback" id="fb5"></span>
+        </div>
+      </div>
+
+      <div class="math-problem float-p">
+        <div class="mp-context">📏 Împărțim 7.5 metri de material în 2 părți egale.</div>
+        <div class="mp-code">
+<span class="kw">float</span> <span class="vr">material</span> = <span class="nm">7.5</span>;<br>
+<span class="kw">float</span> <span class="vr">parti</span> = <span class="nm">2.0</span>;<br>
+<span class="kw">float</span> <span class="vr">parte</span> = material / parti;<br>
+<span class="cm">// parte = ?</span>
+        </div>
+        <div class="mp-question">Cât este <code>parte</code>?</div>
+        <div class="answer-row">
+          <input class="answer-input" id="b3" type="text" placeholder="?">
+          <button class="check-btn" onclick="checkMath('b3',3.75,'fb6',0.01)">Verifică</button>
+          <span class="answer-feedback" id="fb6"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  </div>
+
+  <div class="page" id="page-3" style="display:none;">
+  <!-- ЗАДАНИЕ 3 -->
+  <div class="section-title"><span class="num">3</span> Exerciții din viață — completează spațiile</div>
+  <div class="task-block">
+    <div class="task-header">
+      <span class="task-badge">EXERCIȚIUL 3</span>
+      <span class="task-title">Scrie tipul corect în cod</span>
+    </div>
+    <p class="task-desc">În locul spațiilor albastre introdu tipul de date corect: <code>int</code>, <code>float</code>, <code>char</code> sau <code>bool</code>.</p>
+
+    <!-- Задача 3.1 -->
+    <div class="life-task" id="lt1">
+      <div class="lt-header">
+        <div class="lt-icon">🎂</div>
+        <div>
+          <div class="lt-title">Ziua de naștere</div>
+          <div class="lt-desc">Ionel notează datele despre ziua lui. Are 13 ani, înălțimea 1.62 m, prima literă a numelui — «I», și este foarte fericit: true!</div>
+        </div>
+      </div>
+      <div class="lt-code">
+<span id="b_1_1" class="blank"><input class="blank-input" placeholder="tip" id="bi_1_1"></span> <span class="vr">varsta</span> = <span class="nm">13</span>;<br>
+<span id="b_1_2" class="blank"><input class="blank-input" placeholder="tip" id="bi_1_2"></span> <span class="vr">inaltime</span> = <span class="nm">1.62</span>;<br>
+<span id="b_1_3" class="blank"><input class="blank-input" placeholder="tip" id="bi_1_3"></span> <span class="vr">litera</span> = <span class="str">'I'</span>;<br>
+<span id="b_1_4" class="blank"><input class="blank-input" placeholder="tip" id="bi_1_4"></span> <span class="vr">fericit</span> = <span class="nm">true</span>;
+      </div>
+      <div class="lt-actions">
+        <button class="check-btn" onclick="checkLife(1)">✔ Verifică</button>
+        <span class="lt-result" id="ltr1"></span>
+      </div>
+    </div>
+
+    <!-- Задача 3.2 -->
+    <div class="life-task" id="lt2">
+      <div class="lt-header">
+        <div class="lt-icon">🛒</div>
+        <div>
+          <div class="lt-title">La magazin</div>
+          <div class="lt-desc">Mama te-a trimis la cumpărături. Trebuie 5 pâini, laptele costă 89.9 lei, ai card de reducere (true), iar litera secțiunii — «M».</div>
+        </div>
+      </div>
+      <div class="lt-code">
+<span id="b_2_1" class="blank"><input class="blank-input" placeholder="tip" id="bi_2_1"></span> <span class="vr">numar_paini</span> = <span class="nm">5</span>;<br>
+<span id="b_2_2" class="blank"><input class="blank-input" placeholder="tip" id="bi_2_2"></span> <span class="vr">pret_lapte</span> = <span class="nm">89.9</span>;<br>
+<span id="b_2_3" class="blank"><input class="blank-input" placeholder="tip" id="bi_2_3"></span> <span class="vr">are_card_reducere</span> = <span class="nm">true</span>;<br>
+<span id="b_2_4" class="blank"><input class="blank-input" placeholder="tip" id="bi_2_4"></span> <span class="vr">sectiune</span> = <span class="str">'M'</span>;
+      </div>
+      <div class="lt-actions">
+        <button class="check-btn" onclick="checkLife(2)">✔ Verifică</button>
+        <span class="lt-result" id="ltr2"></span>
+      </div>
+    </div>
+
+    <!-- Задача 3.3 -->
+    <div class="life-task" id="lt3">
+      <div class="lt-header">
+        <div class="lt-icon">⚽</div>
+        <div>
+          <div class="lt-title">Meci de fotbal</div>
+          <div class="lt-desc">Programul înregistrează datele meciului: scorul echipei noastre — 3 goluri, timpul mediu al golului — 38.5 minute, echipa a câștigat (true), litera grupei — 'A'.</div>
+        </div>
+      </div>
+      <div class="lt-code">
+<span id="b_3_1" class="blank"><input class="blank-input" placeholder="tip" id="bi_3_1"></span> <span class="vr">scor</span> = <span class="nm">3</span>;<br>
+<span id="b_3_2" class="blank"><input class="blank-input" placeholder="tip" id="bi_3_2"></span> <span class="vr">timp_mediu</span> = <span class="nm">38.5</span>;<br>
+<span id="b_3_3" class="blank"><input class="blank-input" placeholder="tip" id="bi_3_3"></span> <span class="vr">victorie</span> = <span class="nm">true</span>;<br>
+<span id="b_3_4" class="blank"><input class="blank-input" placeholder="tip" id="bi_3_4"></span> <span class="vr">grupa</span> = <span class="str">'A'</span>;
+      </div>
+      <div class="lt-actions">
+        <button class="check-btn" onclick="checkLife(3)">✔ Verifică</button>
+        <span class="lt-result" id="ltr3"></span>
+      </div>
+    </div>
+
+    <!-- Progress -->
+    <div class="progress-wrap">
+      <div class="progress-label">Exerciții rezolvate:</div>
+      <div class="progress-bar-outer"><div class="progress-bar-inner" id="prog-bar"></div></div>
+      <div class="progress-label" id="prog-text">0 / 3</div>
+    </div>
+  </div>
+
+
+  </div>
+
+  <div class="page" id="page-4" style="display:none;">
+  <!-- РАЗДЕЛ 4: ПРОГРАММЫ -->
+  <div class="section-title"><span class="num">💻</span> Exemple de programe în C++</div>
+
+  <!-- Программа 1 -->
+  <div class="task-block" style="margin-bottom:16px;">
+    <div class="task-header">
+      <span class="task-badge" style="background:linear-gradient(135deg,#0ea5e9,#2563eb);">PROGRAMUL 1</span>
+      <span class="task-title">🛒 Bon de casă</span>
+    </div>
+    <p class="task-desc">Programul calculează costul cumpărăturilor și afișează bonul. Observă: cantitatea — <code>int</code>, prețul — <code>float</code>, totalul — tot <code>float</code>.</p>
+    <div class="prog-code" id="prog1">
+<span class="cm">// Program: Bon de casă</span><br>
+<span class="kw">#include</span> <span class="str">&lt;iostream&gt;</span><br>
+<span class="kw">using namespace</span> std;<br>
+<br>
+<span class="kw">int</span> main() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="cm">// Date despre produs</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">int</span>   <span class="vr">cantitate</span>  = <span class="nm">3</span>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">float</span> <span class="vr">pret</span>       = <span class="nm">45.5</span>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">bool</span>  <span class="vr">reducere</span>   = <span class="nm">false</span>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">char</span>  <span class="vr">sectiune</span>   = <span class="str">'A'</span>;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="cm">// Calculăm totalul</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">float</span> <span class="vr">total</span> = cantitate * pret;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cout &lt;&lt; <span class="str">"=== BON ==="</span>    &lt;&lt; endl;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cout &lt;&lt; <span class="str">"Sectiune: "</span>    &lt;&lt; sectiune  &lt;&lt; endl;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cout &lt;&lt; <span class="str">"Cantitate: "</span>   &lt;&lt; cantitate &lt;&lt; endl;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cout &lt;&lt; <span class="str">"Pret unitar: "</span> &lt;&lt; pret      &lt;&lt; endl;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cout &lt;&lt; <span class="str">"Total: "</span>       &lt;&lt; total     &lt;&lt; endl;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cout &lt;&lt; <span class="str">"Reducere: "</span>    &lt;&lt; reducere  &lt;&lt; endl;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span> <span class="nm">0</span>;<br>
+}
+    </div>
+    <div class="prog-output">
+      <div class="po-label">📟 Rezultatul programului:</div>
+=== BON ===<br>
+Sectiune: A<br>
+Cantitate: 3<br>
+Pret unitar: 45.5<br>
+Total: 136.5<br>
+Reducere: 0
+    </div>
+  </div>
+
+
+  <div class="section-title"><span class="num">4</span> Calculează bonul</div>
+  <!-- ЗАДАНИЕ 5: Чек в магазине -->
+  <div class="task-block">
+    <div class="task-header">
+      <span class="task-badge" style="background:linear-gradient(135deg,#d97706,#f59e0b);">EXERCIȚIUL 4</span>
+      <span class="task-title">🛒 Bon de casă</span>
+    </div>
+    <p class="task-desc">
+      Programul calculează bonul cumpărătorului. Completează spațiile: tipurile de date pentru fiecare variabilă și expresia pentru suma totală (preț × cantitate).
+    </p>
+
+    <div class="prog-code">
+<span class="cm">// Program: Bon de casă</span><br>
+<span class="kw">#include</span> <span class="str">&lt;iostream&gt;</span><br>
+<span class="kw">using namespace</span> std;<br>
+<br>
+<span class="kw">int</span> main() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="cm">// Litera secțiunii — un singur caracter</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span id="cb1" class="blank2"><input class="blank2-input" id="cbi1" placeholder="tip"></span> <span class="vr">sectiune</span> = <span class="str">'M'</span>;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="cm">// Numărul de produse (bucăți)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span id="cb2" class="blank2"><input class="blank2-input" id="cbi2" placeholder="tip"></span> <span class="vr">cantitate</span> = <span class="nm">4</span>;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="cm">// Prețul unui produs (lei)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span id="cb3" class="blank2"><input class="blank2-input" id="cbi3" placeholder="tip"></span> <span class="vr">pret</span> = <span class="nm">67.5</span>;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="cm">// Există reducere?</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span id="cb4" class="blank2"><input class="blank2-input" id="cbi4" placeholder="tip"></span> <span class="vr">reducere</span> = <span class="nm">false</span>;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="cm">// Total = preț × cantitate</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">float</span> <span class="vr">total</span> = <span id="cb5" class="blank2" style="min-width:140px;"><input class="blank2-input" id="cbi5" placeholder="expresie"></span>;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cout &lt;&lt; <span class="str">"Sectiune: "</span>  &lt;&lt; sectiune  &lt;&lt; endl;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cout &lt;&lt; <span class="str">"Cantitate: "</span> &lt;&lt; cantitate &lt;&lt; endl;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cout &lt;&lt; <span class="str">"Pret: "</span>      &lt;&lt; pret      &lt;&lt; endl;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cout &lt;&lt; <span class="str">"Total: "</span>     &lt;&lt; total     &lt;&lt; endl;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cout &lt;&lt; <span class="str">"Reducere: "</span>  &lt;&lt; reducere  &lt;&lt; endl;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span> <span class="nm">0</span>;<br>
+}
+    </div>
+
+    <!-- Ученик заполняет вывод -->
+    <div class="output-predict">
+      <div class="po-label">✏️ Ce va afișa programul? Scrie rezultatul:</div>
+      <div class="output-lines">
+        <div class="out-line"><span class="out-prefix">Sectiune:&nbsp;</span><span id="cp1" class="oblank"><input class="oblank-input" id="ci1" placeholder="?"></span></div>
+        <div class="out-line"><span class="out-prefix">Cantitate:&nbsp;</span><span id="cp2" class="oblank"><input class="oblank-input" id="ci2" placeholder="?"></span></div>
+        <div class="out-line"><span class="out-prefix">Pret:&nbsp;</span><span id="cp3" class="oblank"><input class="oblank-input" id="ci3" placeholder="?"></span></div>
+        <div class="out-line"><span class="out-prefix">Total:&nbsp;</span><span id="cp4" class="oblank"><input class="oblank-input" id="ci4" placeholder="?"></span></div>
+        <div class="out-line"><span class="out-prefix">Reducere:&nbsp;</span><span id="cp5" class="oblank"><input class="oblank-input" id="ci5o" placeholder="?"></span></div>
+      </div>
+    </div>
+
+    <div style="margin-top:18px; display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
+      <button class="check-btn" style="font-size:15px; padding:10px 28px;" onclick="checkChek()">✔ Verifică tot</button>
+      <button class="reset-btn" onclick="resetChek()">🔄 Resetează</button>
+      <span class="lt-result" id="chek-msg"></span>
+    </div>
+  </div>
+
+  </div>
+
+  <div class="page" id="page-5" style="display:none;">
+  <!-- ЗАДАНИЕ 4: заполни программу -->
+  <div class="section-title"><span class="num">5</span> Completează programul singur</div>
+  <div class="task-block">
+    <div class="task-header">
+      <span class="task-badge">EXERCIȚIUL 5</span>
+      <span class="task-title">🎒 Pregătiri pentru școală</span>
+    </div>
+    <p class="task-desc">
+      Iată un program despre pregătirile pentru școală. Completează spațiile: tipurile de date pentru fiecare variabilă și valoarea care lipsește.
+      Completează toate câmpurile albastre și apasă «Verifică tot».
+    </p>
+
+    <div class="prog-code" id="prog-task">
+<span class="cm">// Program: Pregătiri pentru școală</span><br>
+<span class="kw">#include</span> <span class="str">&lt;iostream&gt;</span><br>
+<span class="kw">using namespace</span> std;<br>
+<br>
+<span class="kw">int</span> main() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="cm">// Numărul de caiete în ghiozdan</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span id="pb1" class="blank2"><input class="blank2-input" id="pbi1" placeholder="tip"></span> <span class="vr">caiete</span> = <span class="nm">5</span>;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="cm">// Greutatea ghiozdanului în kilograme</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span id="pb2" class="blank2"><input class="blank2-input" id="pbi2" placeholder="tip"></span> <span class="vr">greutate</span> = <span class="nm">3.2</span>;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="cm">// Litera clasei (A, B sau C)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span id="pb3" class="blank2"><input class="blank2-input" id="pbi3" placeholder="tip"></span> <span class="vr">clasa</span> = <span class="str">'B'</span>;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="cm">// S-a făcut tema pentru acasă?</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span id="pb4" class="blank2"><input class="blank2-input" id="pbi4" placeholder="tip"></span> <span class="vr">tema</span> = <span class="nm">true</span>;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="cm">// Calculăm: dacă am adăugat 2 caiete</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span id="pb5" class="blank2"><input class="blank2-input" id="pbi5" placeholder="tip"></span> <span class="vr">total</span> = caiete + <span id="pb6" class="blank2" style="min-width:60px;"><input class="blank2-input" id="pbi6" placeholder="nr."></span>;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cout &lt;&lt; <span class="str">"Clasa: "</span>     &lt;&lt; clasa    &lt;&lt; endl;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cout &lt;&lt; <span class="str">"Caiete: "</span>    &lt;&lt; total    &lt;&lt; endl;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cout &lt;&lt; <span class="str">"Greutate: "</span>  &lt;&lt; greutate &lt;&lt; endl;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cout &lt;&lt; <span class="str">"Tema: "</span>      &lt;&lt; tema     &lt;&lt; endl;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span> <span class="nm">0</span>;<br>
+}
+    </div>
+
+    <!-- Ученик заполняет вывод -->
+    <div class="output-predict">
+      <div class="po-label">✏️ Ce va afișa programul? Scrie rezultatul:</div>
+      <div class="output-lines">
+        <div class="out-line"><span class="out-prefix">Clasa:&nbsp;</span><span id="op1" class="oblank"><input class="oblank-input" id="oi1" placeholder="?"></span></div>
+        <div class="out-line"><span class="out-prefix">Caiete:&nbsp;</span><span id="op2" class="oblank"><input class="oblank-input" id="oi2" placeholder="?"></span></div>
+        <div class="out-line"><span class="out-prefix">Greutate:&nbsp;</span><span id="op3" class="oblank"><input class="oblank-input" id="oi3" placeholder="?"></span></div>
+        <div class="out-line"><span class="out-prefix">Tema:&nbsp;</span><span id="op4" class="oblank"><input class="oblank-input" id="oi4" placeholder="?"></span></div>
+      </div>
+    </div>
+
+    <div style="margin-top:18px; display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
+      <button class="check-btn" style="font-size:15px; padding:10px 28px;" onclick="checkProgram()">✔ Verifică tot</button>
+      <button class="reset-btn" onclick="resetProgram()">🔄 Resetează</button>
+      <span class="lt-result" id="prog-task-msg"></span>
+    </div>
+  </div>
+
+  </div>
+
+
+  <div class="page" id="page-6" style="display:none;">
+    <div class="task-block" style="text-align: center;">
+      <div class="task-header" style="justify-content: center; flex-direction: column; gap: 10px;">
+        <span class="task-badge" style="background:linear-gradient(135deg,#10b981,#34d399); font-size:16px;">FINALIZARE</span>
+        <span class="task-title" style="font-size: 24px;">Trimite Rezultatele</span>
+      </div>
+      <p class="task-desc">Ai terminat toate exercițiile! Introdu datele tale pentru a trimite punctajul profesorului.</p>
+      
+      <div class="form-container" style="max-width: 400px; margin: 0 auto; text-align: left;">
+        <div class="score-summary" style="background: var(--surface2); padding: 15px; border-radius: 10px; margin-bottom: 20px; text-align: center; border: 2px solid #6366f1;">
+          <span style="font-size: 14px; color: var(--text-muted);">Punctaj acumulat:</span><br>
+          <span id="final-score" style="font-size: 32px; font-weight: 900; color: #60a5fa;">0</span> <span style="font-size: 16px;">puncte</span>
+        </div>
+        
+        <label class="form-label">Nume:</label>
+        <input type="text" id="student-nume" class="form-input" placeholder="ex: Ionescu">
+        
+        <label class="form-label">Prenume:</label>
+        <input type="text" id="student-prenume" class="form-input" placeholder="ex: Andrei">
+        
+        <label class="form-label">Clasa:</label>
+        <input type="text" id="student-clasa" class="form-input" placeholder="ex: 7A">
+        
+        <button id="submit-btn" class="submit-btn" onclick="submitResults()">📤 Trimite rezultatele</button>
+        <div id="submit-msg" class="submit-msg"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- НАВИГАЦИЯ -->
+  <div class="pagination">
+    <button id="prev-btn" style="display:none;" onclick="changePage(-1)">⬅️ Înapoi</button>
+    <span class="page-indicator"><span id="curr-page">1</span> / 6</span>
+    <button id="next-btn" onclick="changePage(1)">Înainte ➡️</button>
+  </div>
+
+</div>
+
+<div class="footer">C++ · Tipuri de date · Clasa a 7-a · Informatică</div>
+
+
+
+<script src="script.js"></script>
+</body>
+</html>
